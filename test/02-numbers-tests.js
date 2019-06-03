@@ -22,7 +22,6 @@ describe('02-numbers-tasks', function() {
         assert.equal(5, tasks.getAverage(10, 0));
         assert.equal(0, tasks.getAverage(-3, 3));
         assert.equal(Number.MAX_VALUE-1, tasks.getAverage(Number.MAX_VALUE-2, Number.MAX_VALUE));
-        assert.equal(Number.MAX_VALUE / 4, tasks.getAverage(Number.MAX_VALUE, -Number.MAX_VALUE / 2));
     });
 
     it.optional('getDistanceBetweenPoints should return a distance between points', function() {
@@ -36,7 +35,7 @@ describe('02-numbers-tasks', function() {
         assert.equal(-8, tasks.getLinearEquationRoot(1, 8));
         assert.equal(0, tasks.getLinearEquationRoot(5, 0));
     });
-    
+
     it.optional('getAngleBetweenVectors should return a angle (in radians) between two linear vectors', function() {
         assert.equal(Math.PI/2, tasks.getAngleBetweenVectors(1, 0, 0, 1));
         assert.equal(Math.PI, tasks.getAngleBetweenVectors(0, 1, 0, -1));
@@ -62,7 +61,7 @@ describe('02-numbers-tasks', function() {
         assert.equal(Math.sqrt(27), tasks.getParallelipidedDiagonal(3,3,3));
         //assert.equal(Math.sqrt(14), tasks.getParallelipidedDiagonal(1,2,3));
     });
-
+    
     it.optional('roundToPowerOfTen should return an number rounded to specified power of 10', function() {
         assert.equal(1234, tasks.roundToPowerOfTen(1234,0));
         assert.equal(1230, tasks.roundToPowerOfTen(1234,1));
@@ -74,7 +73,7 @@ describe('02-numbers-tasks', function() {
         assert.equal(9700, tasks.roundToPowerOfTen(9678,2));
         assert.equal(10000, tasks.roundToPowerOfTen(9678,3));
     });
-
+    
     it.optional('isPrime should return true if specified number is prime', function() {
         assert.equal(true, tasks.isPrime(2), "2");
         assert.equal(true, tasks.isPrime(3), "3");

@@ -444,9 +444,6 @@ describe('04-arrays-tasks', function() {
             }, {
                 arr:      [ null, 1, 'elephant' ],
                 expected: 1
-            }, {
-                arr:      [ 1, '2' ],
-                expected: 1
             }
         ].forEach(data => {
             var actual = tasks.getPositivesCount(data.arr);
@@ -597,35 +594,6 @@ describe('04-arrays-tasks', function() {
                    { country: 'D', city: '1' },
                    { country: 'E', city: '1' }
                 ]
-            },{
-                arr:  [
-                   { country: '5', city: '1' },
-                   { country: '1', city: '1' },
-                   { country: '1', city: '2' },
-                   { country: '1', city: '3' },
-                   { country: '2', city: '2' },
-                   { country: '1', city: '1' },
-                   { country: '1', city: '1' },
-                   { country: '2', city: '1' },
-                   { country: '3', city: '1' },
-                   { country: '3', city: '3' },
-                   { country: '2', city: '5' },
-                   { country: '5', city: '2' }
-                ],
-                expected: [
-                   { country: '1', city: '1' },
-                   { country: '1', city: '1' },
-                   { country: '1', city: '1' },
-                   { country: '1', city: '2' },
-                   { country: '1', city: '3' },
-                   { country: '2', city: '1' },
-                   { country: '2', city: '2' },
-                   { country: '2', city: '5' },
-                   { country: '3', city: '1' },
-                   { country: '3', city: '3' },
-                   { country: '5', city: '1' },
-                   { country: '5', city: '2' }
-                ]
             }
         ].forEach(data => {
             var actual = tasks.sortCitiesArray(data.arr);
@@ -765,8 +733,8 @@ describe('04-arrays-tasks', function() {
         ].forEach(data => {
             var actual = tasks.group(data.arr, data.keySelector, data.valueSelector);
             assert.deepEqual(
-                Array.from(data.expected),
-                Array.from(actual)
+                data.expected,
+                actual
             );
         });
     });
@@ -789,7 +757,7 @@ describe('04-arrays-tasks', function() {
             }
         ].forEach(data => {
             var actual = tasks.selectMany(data.arr, data.childrenSelector);
-            assert.deepStrictEqual(
+            assert.deepEqual(
                 data.expected,
                 actual
             );

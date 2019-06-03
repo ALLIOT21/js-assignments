@@ -18,8 +18,8 @@ describe('03-date-tasks', function() {
         );
 
         assert.equal(
-            895370400000,
-            tasks.parseDataFromRfc2822('Sun, 17 May 1998 03:00:00 GMT+0100').valueOf()
+            895373940000,
+            tasks.parseDataFromRfc2822('Sun, 17 May 1998 03:00:00 GMT+01').valueOf()
         );
     });
 
@@ -85,12 +85,21 @@ describe('03-date-tasks', function() {
                 expected:  '05:20:10.453'
             }
         ].forEach(data => {
-            assert.equal(
+            assert(
                 data.expected,
                 tasks.timeSpanToString(data.startDate, data.endDate)
             );
         });
 
+        [
+            new Date(1900,1,1),
+            new Date(2001,1,1)
+        ].forEach(date => {
+            assert(
+                tasks.isLeapYear(date) == false,
+                `${date} is not a leap year`
+            );
+        });
     });
     
     

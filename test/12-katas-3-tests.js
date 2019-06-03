@@ -35,7 +35,7 @@ describe('12-katas-3-tasks', function() {
     });
 
 
-    it.optional('getPermutations should return all possible string permutations', () => {
+   it.optional('getPermutations should return all possible string permutations', () => {
         [
             {
                 chars:    'a',

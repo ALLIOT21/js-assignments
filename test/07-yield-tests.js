@@ -228,7 +228,7 @@ describe('07-yield-tasks', function() {
     });
 
 
-    it.optional('getFibonacciSequence should return the Fibonacci sequence', () => {
+  it.optional('getFibonacciSequence should return the Fibonacci sequence', () => {
 
         var expected = [
             0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377, 610, 987, 1597, 2584, 4181,
@@ -243,6 +243,7 @@ describe('07-yield-tasks', function() {
                 expected[index++],
                 `Sequence mismatch at index no ${index}: `
             );
+
             if (index>=expected.length) break;
         }
         if (index<expected.length) assert.fail(index, expected.length,`sequence length should be equal to ${expected.length}`);
@@ -396,8 +397,6 @@ describe('07-yield-tasks', function() {
 
 
     it.optional('mergeSortedSequences should merge two sorted sequences into one sorted sequence', () => {
-        const ITEMS_COUNT = 500;
-        
         var odds = function* () {
                for(var i=1; true; i+=2) yield i;
             };
@@ -405,45 +404,35 @@ describe('07-yield-tasks', function() {
                for(var i=2; true; i+=2) yield i;
             };
         var expected = 1;
-        var count = 0;
         for(let value of tasks.mergeSortedSequences(odds, evens)) {
             assert.equal(
                 value,
                 expected++
             );
-            count++;
-            if (count==ITEMS_COUNT) break;
+            if (expected>1000) break;
         }
-        assert.equal(count, ITEMS_COUNT);
 
         var zero = function* () { yield 0; }
         expected = 0;
-        count = 0;
         for(let value of tasks.mergeSortedSequences(zero, evens)) {
             assert.equal(
                 value,
                 expected
             );
             expected +=2;
-            count++;
-            if (count == ITEMS_COUNT) break;
+            if (expected>500) break;
         }
-        assert.equal(count, ITEMS_COUNT);
-        
 
         var minus1 = function* () { yield -1; }
         expected = -1;
-        count = 0;
         for(let value of tasks.mergeSortedSequences(odds, minus1)) {
             assert.equal(
                 value,
                 expected
             );
             expected +=2;
-            count++;
-            if (count == ITEMS_COUNT) break;
+            if (expected>500) break;
         }
-        assert.equal(count, ITEMS_COUNT);
 
     });
 });
